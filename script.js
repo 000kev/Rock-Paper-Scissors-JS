@@ -56,7 +56,10 @@ const game = () => {
         if (round_winner === "draw") continue;
         else round_winner === "player" ? player_wins++ : computer_wins++;
     }
-
+    let game_announcement = "";
+    if (player_wins === computer_wins) game_announcement = "It's a draw!";
+    else player_wins > computer_wins ? game_announcement = "Congratulations, Player is the winner!" : game_announcement = "Too bad... Computer wins, seems like the robots are taking over...";
+    console.log(game_announcement);
 }
 
 const main = () => {
