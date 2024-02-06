@@ -25,12 +25,29 @@ const randomPlay = () => {
 }
 
 const playRound = (playerSelection, computerSelection) => {
+
     // logic of the game goes here
-    // rock beats scissors
-    // scissors beats paper
-    // paper beats rock
-    // returns string declaring winner of the round
-    // returns draw if the player and computer choose the same sign
+    if (// rock beats scissors
+        playerSelection == "rock" && computerSelection == "scissors" ||
+        // scissors beats paper
+        playerSelection == "scissors" && computerSelection == "paper" ||
+        // paper beats rock
+        playerSelection == "paper" && computerSelection == "rock") {
+            // returns string declaring winner of the round
+            console.log("you won?? You must have cheated.")
+            return "player";
+        } else if (playerSelection == "rock" && computerSelection == "paper" ||
+                   playerSelection == "scissors" && computerSelection == "rock" ||
+                   playerSelection == "paper" && computerSelection == "scissors") {
+                console.log("Mwhahahahahahaha! I win again.")
+                return "computer";
+              // returns draw if the player and computer choose the same sign
+            } else if (playerSelection == computerSelection) {
+                console.log("A draw? How boring.")
+                return "draw";
+            } else {
+                console.log("placeholder")
+            }    
 }
 
 const validateSelection = (playerSelection) => {
