@@ -25,22 +25,26 @@ const randomPlay = () => {
 }
 
 const playRound = (playerSelection, computerSelection) => {
+
     // logic of the game goes here
     if (// rock beats scissors
-        playerSelection == rock && computerSelection == scissors ||
+        playerSelection == "rock" && computerSelection == "scissors" ||
         // scissors beats paper
-        playerSelection == scissors && computerSelection == paper ||
+        playerSelection == "scissors" && computerSelection == "paper" ||
         // paper beats rock
-        playerSelection == paper && computerSelection == rock) {
+        playerSelection == "paper" && computerSelection == "rock") {
             // returns string declaring winner of the round
             return "player";
-        } else if (playerSelection == rock && computerSelection == paper ||
-                   playerSelection == scissors && computerSelection == rock ||
-                   playerSelection == paper && computerSelection == scissors) {
+            console.log("you won?? You must have cheated.")
+        } else if (playerSelection == "rock" && computerSelection == "paper" ||
+                   playerSelection == "scissors" && computerSelection == "rock" ||
+                   playerSelection == "paper" && computerSelection == "scissors") {
                 return "computer";
+                console.log("Mwhahahahahahaha! I win again.")
               // returns draw if the player and computer choose the same sign
             } else if (playerSelection == computerSelection) {
                 return "draw";
+                console.log("A draw? How boring.")
             } else {
                 console.log("placeholder")
             }    
