@@ -27,6 +27,7 @@ const randomPlay = () => {
 const playRound = (playerSelection, computerSelection) => {
 
     // logic of the game goes here
+    console.log("You chose", playerSelection, " and the Evil AI chose", computerSelection);
     if (// rock beats scissors
         playerSelection == "rock" && computerSelection == "scissors" ||
         // scissors beats paper
@@ -34,17 +35,20 @@ const playRound = (playerSelection, computerSelection) => {
         // paper beats rock
         playerSelection == "paper" && computerSelection == "rock") {
             // returns string declaring winner of the round
-            return "player";
+            
             console.log("you won?? You must have cheated.")
+            return "player";
         } else if (playerSelection == "rock" && computerSelection == "paper" ||
                    playerSelection == "scissors" && computerSelection == "rock" ||
                    playerSelection == "paper" && computerSelection == "scissors") {
-                return "computer";
+                
                 console.log("Mwhahahahahahaha! I win again.")
+                return "computer";
               // returns draw if the player and computer choose the same sign
             } else if (playerSelection == computerSelection) {
+                
+                console.log("A draw? How boring.");
                 return "draw";
-                console.log("A draw? How boring.")
             } else {
                 console.log("placeholder")
             }    
@@ -55,13 +59,13 @@ const validateSelection = (playerSelection) => {
 
     if (typeof (playerSelection) === 'object') {
         if (playerSelection == null) {
-            alert("I can't believe you pressed cancel");
+            console.log("I can't believe you pressed cancel");
             return false;
         } else if (playerSelection == undefined) {
-            alert("Bro I didn't knew you could get this on a prompt")
+            console.log("Bro I didn't knew you could get this on a prompt")
             return false;
         }else if (playerSelection == NaN) {
-            alert("Bro I didn't knew you could get this on a prompt")
+            console.log("Bro I didn't knew you could get this on a prompt")
             return false;
         }
     }
@@ -75,21 +79,20 @@ const validateSelection = (playerSelection) => {
                 if (!regex2.test(playerSelection)) {
                     let weapons = ['rock', 'paper', 'scissors'];
                     if (weapons.includes(playerSelection)) {
-                        alert('perfect you did awesome')
                         return true;
                     } else {
                         return false;
                     }
                 } else {
-                    alert("Bro you cant use special characters on Rock Papper Scissors")
+                    console.log("Bro you cant use special characters on Rock Papper Scissors")
                     return false;
                 }
             } else {
-                alert('put some letters bro, dont put numbers');
+                console.log('put some letters bro, dont put numbers');
                 return false;
             }
         } else {
-            alert("Please put somthing on there")
+            console.log("Please put something on there")
             return false;
         }
     }
@@ -116,6 +119,7 @@ const game = () => {
         else round_winner === "player" ? player_wins++ : computer_wins++;
     }
     let game_announcement = "";
+    console.log("Player won", player_wins, " matches and the Evil AI won", computer_wins, " matches");
     if (player_wins === computer_wins) game_announcement = "It's a draw!";
     else player_wins > computer_wins ? game_announcement = "Congratulations, Player is the winner!" : game_announcement = "Too bad... Computer wins, seems like the robots are taking over...";
     console.log(game_announcement);
