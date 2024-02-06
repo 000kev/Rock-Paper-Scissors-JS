@@ -83,7 +83,7 @@ const game = () => {
     // does a playthrough of the game with 5 rounds
     let player_wins = 0;
     let computer_wins = 0;
-    let player_selection = '';
+    let player_selection = "";
 
     for (let i = 0; i < 5; i++) {
         let computer_selection = randomPlay();
@@ -98,7 +98,10 @@ const game = () => {
         if (round_winner === "draw") continue;
         else round_winner === "player" ? player_wins++ : computer_wins++;
     }
-
+    let game_announcement = "";
+    if (player_wins === computer_wins) game_announcement = "It's a draw!";
+    else player_wins > computer_wins ? game_announcement = "Congratulations, Player is the winner!" : game_announcement = "Too bad... Computer wins, seems like the robots are taking over...";
+    console.log(game_announcement);
 }
 
 const main = () => {
