@@ -1,3 +1,5 @@
+let player;
+
 const randomPlay = () => {
     // should return a random option between rock, paper and scissors
     let random_selection = "";
@@ -35,7 +37,7 @@ const playRound = (playerSelection, computerSelection) => {
         playerSelection == "paper" && computerSelection == "rock") {
             // returns string declaring winner of the round
             
-            console.log("you won?? You must have cheated.")
+            console.log("You won?? You must have cheated.")
             return "player";
         } else if (playerSelection == "rock" && computerSelection == "paper" ||
                    playerSelection == "scissors" && computerSelection == "rock" ||
@@ -103,36 +105,36 @@ const game = () => {
     let player_wins = 0;
     let computer_wins = 0;
     let player_selection = "";
+    player = prompt("Please enter your username")
+    if(confirm(`Welcome ${player} to Rock, Paper or Scissors! If you are new to the game click ok to read the rules. If you already know the rules click cancel to proceed to the game, and Good Luck😉🍀! `)){
+        confirm(`A classic two-person game. Players start each round by saying, “rock, paper, scissors, shoot!” On “shoot,” each player holds out their fist for rock🪨, flat hand for paper📄, or their index and middle finger for scissors✄. But since the computer doesn't have fingers, you will use the prompt to type rock, paper or scissors.
+        The rules are :
+        🔴 Rock crushes scissors
+        🔴 Scissors cuts paper
+        🔴 Paper covers rock.
+        🎮See who wins each round!`)
+    }
 
     for (let i = 0; i < 5; i++) {
-        let computer_selection = randomPlay();
-        if(confirm(`Welcome to Rock, Paper or Scissors! If you are new to the game click ok to read the rules. If you already know the rules click cancel to proceed to the game, and Good Luck😉🍀! `)){
-            confirm(`A classic two-person game. Players start each round by saying, “rock, paper, scissors, shoot!” On “shoot,” each player holds out their fist for rock🪨, flat hand for paper📄, or their index and middle finger for scissors✄. But since the computer doesn't have fingers, you will use the prompt to type rock, paper or scissors.
-            The rules are :
-            🔴 Rock crushes scissors
-            🔴 Scissors cuts paper
-            🔴 Paper covers rock.
-            🎮See who wins each round!`)
-        }else{
-            player_selection = prompt("Rock, paper, scissors, shoot!");
-        }
-        player_selection = prompt("Rock, paper, scissors, shoot");
-
+        let computer_selection = randomPlay();     
+        alert(`ROUND ${i+1}  🔔`)
+        player_selection = prompt("Rock, paper, scissors, SHOOT!");
+        player_selection = player_selection.toLowerCase()
+        player_selection = player_selection.trim()
         while (!validateSelection(player_selection)) {
-            alert("Haven't you played this game before? Your only options are Rock, Paper or Scissors!");
+            alert(`Haven't you played this game before ${player}? Your only options are Rock, Paper or Scissors!`);
             player_selection = prompt("Rock, Paper or Scissors?");
-            // prompt returns an empty string if no input is given (player_selection == "")
-            // prompt returns null if cancel is selected or the page is reloaded (player_selection == null) 
-        }
+            }
         let round_winner = playRound(player_selection, computer_selection);
         if (round_winner === "draw") continue;
         else round_winner === "player" ? player_wins++ : computer_wins++;
     }
     let game_announcement = "";
-    console.log("Player won", player_wins, " matches and the Evil AI won", computer_wins, " matches");
+    console.log(`${player} won  ${player_wins}  matches and the Evil AI won ${computer_wins}  matches`);
     if (player_wins === computer_wins) game_announcement = "It's a draw!";
-    else player_wins > computer_wins ? game_announcement = "Congratulations, Player is the winner!" : game_announcement = "Too bad... Computer wins, seems like the robots are taking over...";
+    else player_wins > computer_wins ? game_announcement = `Congratulations ${player} is the winner!` : game_announcement = "Too bad... Computer wins, seems like the robots are taking over...";
     console.log(game_announcement);
+    alert(game_announcement)
 }
 
 const main = () => {
