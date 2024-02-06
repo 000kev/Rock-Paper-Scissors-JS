@@ -1,5 +1,5 @@
 # Rock-Paper-Scissors-JS
-Rock Paper Scissors games played on console, using Javascript.
+A Rock Paper Scissors games to be played on console, using Javascript only.
 
 Team Members 
 - Claudiu Satmar
