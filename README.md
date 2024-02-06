@@ -9,7 +9,7 @@ A classic two-person game. Players start each round by saying, “rock, paper, s
             🔴 Paper covers rock.
 
 # How to open the browser console
-- Llick this [link](https://support.monday.com/hc/en-us/articles/360002197259-How-to-open-the-developer-console#:~:text=Step%201%3A%20To%20open%20the,to%20open%20the%20developer%20console.) to learn how to open the browser console in most modern browsers.
+- Click this [link](https://support.monday.com/hc/en-us/articles/360002197259-How-to-open-the-developer-console#:~:text=Step%201%3A%20To%20open%20the,to%20open%20the%20developer%20console.) to learn how to open the browser console in most modern browsers.
 
 Team Members 
 - Claudiu Satmar
