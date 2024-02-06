@@ -26,7 +26,6 @@ const randomPlay = () => {
 
 const playRound = (playerSelection, computerSelection) => {
     // logic of the game goes here
-    playerSelection.toLowerCase()
     if (// rock beats scissors
         playerSelection == rock && computerSelection == scissors ||
         // scissors beats paper
