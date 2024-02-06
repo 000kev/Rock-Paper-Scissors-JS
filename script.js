@@ -26,11 +26,26 @@ const randomPlay = () => {
 
 const playRound = (playerSelection, computerSelection) => {
     // logic of the game goes here
-    // rock beats scissors
-    // scissors beats paper
-    // paper beats rock
-    // returns string declaring winner of the round
-    // returns draw if the player and computer choose the same sign
+    computerSelection = random_selection
+    playerSelection.toLowerCase()
+    if (// rock beats scissors
+        playerSelection == rock && computerSelection == scissors ||
+        // scissors beats paper
+        playerSelection == scissors && computerSelection == paper ||
+        // paper beats rock
+        playerSelection == paper && computerSelection == rock) {
+            // returns string declaring winner of the round
+            return "player"
+        } else if (playerSelection == rock && computerSelection == paper ||
+                   playerSelection == scissors && computerSelection == rock ||
+                   playerSelection == paper && computerSelection == scissors) {
+                return "computer"
+              // returns draw if the player and computer choose the same sign
+            } else if (playerSelection == computerSelection) {
+                return "draw"
+            } else {
+
+            }    
 }
 
 const validateSelection = (playerSelection) => {
