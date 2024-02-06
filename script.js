@@ -25,76 +25,18 @@ const randomPlay = () => {
 }
 
 const playRound = (playerSelection, computerSelection) => {
-
     // logic of the game goes here
-    if (// rock beats scissors
-        playerSelection == "rock" && computerSelection == "scissors" ||
-        // scissors beats paper
-        playerSelection == "scissors" && computerSelection == "paper" ||
-        // paper beats rock
-        playerSelection == "paper" && computerSelection == "rock") {
-            // returns string declaring winner of the round
-            console.log("you won?? You must have cheated.")
-            return "player";
-        } else if (playerSelection == "rock" && computerSelection == "paper" ||
-                   playerSelection == "scissors" && computerSelection == "rock" ||
-                   playerSelection == "paper" && computerSelection == "scissors") {
-                console.log("Mwhahahahahahaha! I win again.")
-                return "computer";
-              // returns draw if the player and computer choose the same sign
-            } else if (playerSelection == computerSelection) {
-                console.log("A draw? How boring.")
-                return "draw";
-            } else {
-                console.log("placeholder")
-            }    
+    // rock beats scissors
+    // scissors beats paper
+    // paper beats rock
+    // returns string declaring winner of the round
+    // returns draw if the player and computer choose the same sign
 }
 
 const validateSelection = (playerSelection) => {
     // returns true or false indicating if the player selection from prompt is valid
-
-    if (typeof (playerSelection) === 'object') {
-        if (playerSelection == null) {
-            alert("I can't believe you pressed cancel");
-            return false;
-        } else if (playerSelection == undefined) {
-            alert("Bro I didn't knew you could get this on a prompt")
-            return false;
-        }else if (playerSelection == NaN) {
-            alert("Bro I didn't knew you could get this on a prompt")
-            return false;
-        }
-    }
-
-    if (typeof (playerSelection === 'string')) {
-        if (playerSelection != '') {
-            let regex1 = /\d/;
-            if (!regex1.test(playerSelection)) {
-                playerSelection = playerSelection.toLowerCase();
-                let regex2 = /[!@#$%^&*(),.?":{}|<>]/g;
-                if (!regex2.test(playerSelection)) {
-                    let weapons = ['rock', 'paper', 'scissors'];
-                    if (weapons.includes(playerSelection)) {
-                        alert('perfect you did awesome')
-                        return true;
-                    } else {
-                        return false;
-                    }
-                } else {
-                    alert("Bro you cant use special characters on Rock Papper Scissors")
-                    return false;
-                }
-            } else {
-                alert('put some letters bro, dont put numbers');
-                return false;
-            }
-        } else {
-            alert("Please put somthing on there")
-            return false;
-        }
-    }
+    return true;
 }
-
 
 const game = () => {
     // does a playthrough of the game with 5 rounds
