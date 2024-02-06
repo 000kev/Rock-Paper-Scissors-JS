@@ -1,7 +1,7 @@
 const randomPlay = () => {
     // should return a random option between rock, paper and scissors
     let random_selection = "";
-    switch(Math.floor(Math.random()*12)) {
+    switch (Math.floor(Math.random() * 12)) {
         case 0:
         case 1:
         case 2:
@@ -52,8 +52,49 @@ const playRound = (playerSelection, computerSelection) => {
 
 const validateSelection = (playerSelection) => {
     // returns true or false indicating if the player selection from prompt is valid
-    return true;
+
+    if (typeof (playerSelection) === 'object') {
+        if (playerSelection == null) {
+            alert("I can't believe you pressed cancel");
+            return false;
+        } else if (playerSelection == undefined) {
+            alert("Bro I didn't knew you could get this on a prompt")
+            return false;
+        }else if (playerSelection == NaN) {
+            alert("Bro I didn't knew you could get this on a prompt")
+            return false;
+        }
+    }
+
+    if (typeof (playerSelection === 'string')) {
+        if (playerSelection != '') {
+            let regex1 = /\d/;
+            if (!regex1.test(playerSelection)) {
+                playerSelection = playerSelection.toLowerCase();
+                let regex2 = /[!@#$%^&*(),.?":{}|<>]/g;
+                if (!regex2.test(playerSelection)) {
+                    let weapons = ['rock', 'paper', 'scissors'];
+                    if (weapons.includes(playerSelection)) {
+                        alert('perfect you did awesome')
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    alert("Bro you cant use special characters on Rock Papper Scissors")
+                    return false;
+                }
+            } else {
+                alert('put some letters bro, dont put numbers');
+                return false;
+            }
+        } else {
+            alert("Please put somthing on there")
+            return false;
+        }
+    }
 }
+
 
 const game = () => {
     // does a playthrough of the game with 5 rounds
@@ -61,7 +102,7 @@ const game = () => {
     let computer_wins = 0;
     let player_selection = "";
 
-    for (let i=0; i<5; i++) {
+    for (let i = 0; i < 5; i++) {
         let computer_selection = randomPlay();
         player_selection = prompt("Rock, Paper or Scissors?");
         while (!validateSelection(player_selection)) {
@@ -86,7 +127,7 @@ const main = () => {
     while (confirm("Want to try your luck again?") == true) {
         game();
     }
-    console.log("Hope you had fun!");
+    alert("Hope you had fun!");
     // after the game, should ask the player if they want to play again
 }
 
