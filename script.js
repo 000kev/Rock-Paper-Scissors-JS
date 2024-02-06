@@ -42,10 +42,11 @@ const game = () => {
     // does a playthrough of the game with 5 rounds
     let player_wins = 0;
     let computer_wins = 0;
+    let player_selection = "";
 
     for (let i=0; i<5; i++) {
         let computer_selection = randomPlay();
-        let player_selection = prompt("Rock, Paper or Scissors?");
+        player_selection = prompt("Rock, Paper or Scissors?");
         while (!validateSelection(player_selection)) {
             alert("Haven't you played this game before? Your only options are Rock, Paper or Scissors!");
             player_selection = prompt("Rock, Paper or Scissors?");
