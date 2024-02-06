@@ -34,17 +34,17 @@ const playRound = (playerSelection, computerSelection) => {
         // paper beats rock
         playerSelection == "paper" && computerSelection == "rock") {
             // returns string declaring winner of the round
-            return "player";
             console.log("you won?? You must have cheated.")
+            return "player";
         } else if (playerSelection == "rock" && computerSelection == "paper" ||
                    playerSelection == "scissors" && computerSelection == "rock" ||
                    playerSelection == "paper" && computerSelection == "scissors") {
-                return "computer";
                 console.log("Mwhahahahahahaha! I win again.")
+                return "computer";
               // returns draw if the player and computer choose the same sign
             } else if (playerSelection == computerSelection) {
-                return "draw";
                 console.log("A draw? How boring.")
+                return "draw";
             } else {
                 console.log("placeholder")
             }    
