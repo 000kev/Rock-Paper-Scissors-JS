@@ -48,7 +48,7 @@ const playRound = (playerSelection, computerSelection) => {
                 console.log("A draw? How boring.")
                 return "draw";
             } else {
-                console.log("placeholder")
+                console.log("Error Error, something went wrong!")
             }    
 }
 
