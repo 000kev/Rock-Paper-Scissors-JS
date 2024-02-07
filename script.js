@@ -89,10 +89,6 @@ const validateSelection = (playerSelection) => {
     else return false;
 }
 
-const forfeit = () => {
-    exit = true;
-}
-
 const game = () => {
     // does a playthrough of the game with 5 rounds
     let player_wins = 0;
@@ -118,7 +114,7 @@ const game = () => {
         player_selection = player_selection.trim()
         player_selection = player_selection.toLowerCase();
         if (player_selection == "exit") {
-            forfeit();
+            exit = true;
             break;
         }
         while (!validateSelection(player_selection)) {
@@ -137,6 +133,7 @@ const game = () => {
         console.log(game_announcement);
         alert(game_announcement);
     } else {
+        console.log("The AI wins automatically since you forfeited!")
         alert("You forfeited! This means you have disappointed all of humanity and the win automatically goes to the machines.")
     }
 }
