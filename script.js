@@ -149,5 +149,4 @@ const main = () => {
     // after the game, should ask the player if they want to play again
 }
 
-location.reload();
 main();
