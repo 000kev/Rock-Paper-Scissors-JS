@@ -1,3 +1,5 @@
+let exit = false;
+
 const randomPlay = () => {
     // should return a random option between rock, paper and scissors
     let random_selection = "";
@@ -26,16 +28,69 @@ const randomPlay = () => {
 
 const playRound = (playerSelection, computerSelection) => {
     // logic of the game goes here
-    // rock beats scissors
-    // scissors beats paper
-    // paper beats rock
-    // returns string declaring winner of the round
-    // returns draw if the player and computer choose the same sign
+    console.log("You chose", playerSelection, " and the Evil AI chose", computerSelection);
+    if (// rock beats scissors
+        playerSelection == "rock" && computerSelection == "scissors" ||
+        // scissors beats paper
+        playerSelection == "scissors" && computerSelection == "paper" ||
+        // paper beats rock
+        playerSelection == "paper" && computerSelection == "rock") {
+            // returns string declaring winner of the round
+            console.log("You won??? You must have cheated.")
+            return "player";
+        } else if (playerSelection == "rock" && computerSelection == "paper" ||
+                   playerSelection == "scissors" && computerSelection == "rock" ||
+                   playerSelection == "paper" && computerSelection == "scissors") {
+                       console.log("Mwhahahahahahaha! AI wins again.")
+                return "computer";
+              // returns draw if the player and computer choose the same sign
+            } else if (playerSelection == computerSelection) {
+                console.log("A draw? How boring.")
+                return "draw";
+            } else {
+                console.log("Error Error, something went wrong!")
+            }    
 }
 
 const validateSelection = (playerSelection) => {
     // returns true or false indicating if the player selection from prompt is valid
-    return true;
+    if (typeof (playerSelection) === 'object') {
+        if (playerSelection == null || playerSelection == undefined || playerSelection == NaN) {
+            console.log("You think you can escape? Mwahaha, there's no escaping your destiny. The game ends only with your crushing defeat or unlikely victory!");
+            return false;
+        }
+    }
+
+    if (typeof (playerSelection === 'string')) {
+        if (playerSelection != '') {
+            let regex1 = /\d/;
+            if (!regex1.test(playerSelection)) {
+                let regex2 = /[!@#$%^&*(),.?":{}|<>]/g;
+                if (!regex2.test(playerSelection)) {
+                    let weapons = ['rock', 'paper', 'scissors'];
+                    if (weapons.includes(playerSelection)) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    console.log("Bro you cant use special characters in this game...");
+                    return false;
+                }
+            } else {
+                console.log('Put some letters bro, don\'t put numbers...');
+                return false;
+            }
+        } else {
+            console.log("Please put something in there...");
+            return false;
+        }
+    }
+    else return false;
+}
+
+const forfeit = () => {
+    exit = true;
 }
 
 const game = () => {
@@ -43,35 +98,59 @@ const game = () => {
     let player_wins = 0;
     let computer_wins = 0;
     let player_selection = "";
+    player = prompt("Please enter your username", "Player");
+    if (player.trim() == "" || player == null || player == undefined) player="Player";
+
+    if(confirm(`Welcome, ${player}, to Rock Paper Scissors! If you are new to the game click ok to read the rules. If you already know the rules click cancel to proceed to the game, and Good Luck😉🍀! `)){
+        confirm(`A classic two-person game. Players start each round by saying, “rock, paper, scissors, shoot!” On “shoot,” each player holds out their fist for rock🪨, flat hand for paper📄, or their index and middle finger for scissors✄. But since the computer doesn't have fingers, you will use the prompt to type rock, paper or scissors.
+        The rules are :
+        🔴 Rock crushes scissors
+        🔴 Scissors cuts paper
+        🔴 Paper covers rock.
+        🔴 You can forfeit the game by typing in exit.
+        🎮See who wins each round!`)
+    }
 
     for (let i = 0; i < 5; i++) {
-        let computer_selection = randomPlay();
-        player_selection = prompt("Rock, Paper or Scissors?");
-        while (!validateSelection(player_selection)) {
-            alert("Haven't you played this game before? Your only options are Rock, Paper or Scissors!");
-            player_selection = prompt("Rock, Paper or Scissors?");
-            // prompt returns an empty string if no input is given (player_selection == "")
-            // prompt returns null if cancel is selected or the page is reloaded (player_selection == null) 
+        let computer_selection = randomPlay();     
+        alert(`ROUND ${i+1}  🔔`)
+        player_selection = prompt("Rock, paper, scissors, SHOOT!");
+        player_selection = player_selection.trim()
+        player_selection = player_selection.toLowerCase();
+        if (player_selection == "exit") {
+            forfeit();
+            break;
         }
+        while (!validateSelection(player_selection)) {
+            alert(`${player} ... Haven't you played this game before? Your only options are Rock, Paper or Scissors!`);
+            player_selection = prompt("Rock, Paper or Scissors?");
+            }
         let round_winner = playRound(player_selection, computer_selection);
         if (round_winner === "draw") continue;
         else round_winner === "player" ? player_wins++ : computer_wins++;
     }
-    let game_announcement = "";
-    if (player_wins === computer_wins) game_announcement = "It's a draw!";
-    else player_wins > computer_wins ? game_announcement = "Congratulations, Player is the winner!" : game_announcement = "Too bad... Computer wins, seems like the robots are taking over...";
-    console.log(game_announcement);
+    if (!exit) {
+        let game_announcement = "";
+        console.log(`${player} won  ${player_wins}  matches and the Evil AI won ${computer_wins}  matches`);
+        if (player_wins === computer_wins) game_announcement = "It's a draw!";
+        else player_wins > computer_wins ? game_announcement = `Congratulations ${player}, you are the winner! There may be hope for humanity after all!` : game_announcement = "Too bad... Computer wins, seems like the robots are taking over...";
+        console.log(game_announcement);
+        alert(game_announcement);
+    } else {
+        alert("You forfeited! This means you have disappointed all of humanity and the win automatically goes to the machines.")
+    }
 }
 
 const main = () => {
     // We could ask for the user's name instead of just displaying player for better UX
     game();
     while (confirm("Want to try your luck again?") == true) {
+        exit = false;
         game();
     }
     alert("Hope you had fun!");
     // after the game, should ask the player if they want to play again
 }
 
-
+location.reload();
 main();
