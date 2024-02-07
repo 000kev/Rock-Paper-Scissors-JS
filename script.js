@@ -99,7 +99,7 @@ const game = () => {
     let computer_wins = 0;
     let player_selection = "";
     player = prompt("Please enter your username", "Player");
-    if (player.trim() == "" || player == null || player == undefined) player="Player";
+    if ( player == null || player == undefined || player.trim() == "") player="Player";
 
     if(confirm(`Welcome, ${player}, to Rock Paper Scissors! If you are new to the game click ok to read the rules. If you already know the rules click cancel to proceed to the game, and Good Luck😉🍀! `)){
         confirm(`A classic two-person game. Players start each round by saying, “rock, paper, scissors, shoot!” On “shoot,” each player holds out their fist for rock🪨, flat hand for paper📄, or their index and middle finger for scissors✄. But since the computer doesn't have fingers, you will use the prompt to type rock, paper or scissors.
