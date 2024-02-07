@@ -28,27 +28,28 @@ const randomPlay = () => {
 
 const playRound = (playerSelection, computerSelection) => {
     // logic of the game goes here
-    console.log("You chose", playerSelection, " and the Evil AI chose", computerSelection);
-    if (// rock beats scissors
+       if (// rock beats scissors
         playerSelection == "rock" && computerSelection == "scissors" ||
         // scissors beats paper
         playerSelection == "scissors" && computerSelection == "paper" ||
         // paper beats rock
         playerSelection == "paper" && computerSelection == "rock") {
             // returns string declaring winner of the round
-            console.log("You won??? You must have cheated.")
+            alert(`You chose ${playerSelection}  and the Evil AI chose, ${computerSelection} \nYou won this round??? You must have cheated. `);
+ 
+            
             return "player";
         } else if (playerSelection == "rock" && computerSelection == "paper" ||
                    playerSelection == "scissors" && computerSelection == "rock" ||
                    playerSelection == "paper" && computerSelection == "scissors") {
-                       console.log("Mwhahahahahahaha! AI wins again.")
+                       alert(`You chose ${playerSelection}  and the Evil AI chose, ${computerSelection} \nMwhahahahahahaha! AI wins again.`)
                 return "computer";
               // returns draw if the player and computer choose the same sign
             } else if (playerSelection == computerSelection) {
-                console.log("A draw? How boring.")
+                alert(`You chose ${playerSelection}  and the Evil AI chose, ${computerSelection} \nA draw? How boring.`)
                 return "draw";
             } else {
-                console.log("Error Error, something went wrong!")
+                alert("Error Error, something went wrong!")
             }    
 }
 
@@ -109,8 +110,8 @@ const game = () => {
 
     for (let i = 0; i < 5; i++) {
         let computer_selection = randomPlay();     
-        alert(`ROUND ${i+1}  🔔`)
-        player_selection = prompt("Rock, paper, scissors, SHOOT!");
+       
+        player_selection = prompt(`ROUND ${i+1}  🔔\nRock, paper, scissors, SHOOT!`);
         player_selection = player_selection.trim()
         player_selection = player_selection.toLowerCase();
         if (player_selection == "exit") {
@@ -128,6 +129,7 @@ const game = () => {
     if (!exit) {
         let game_announcement = "";
         console.log(`${player} won  ${player_wins}  matches and the Evil AI won ${computer_wins}  matches`);
+        alert(`${player} won  ${player_wins}  matches and the Evil AI won ${computer_wins}  matches`);
         if (player_wins === computer_wins) game_announcement = "It's a draw!";
         else player_wins > computer_wins ? game_announcement = `Congratulations ${player}, you are the winner! There may be hope for humanity after all!` : game_announcement = "Too bad... Computer wins, seems like the robots are taking over...";
         console.log(game_announcement);
