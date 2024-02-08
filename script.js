@@ -72,9 +72,6 @@ const validateSelection = (playerSelection) => {
       console.log(
         "You think you can escape? Mwahaha, there's no escaping your destiny. The game ends only with your crushing defeat or unlikely victory!"
         );
-      alert( 
-        "You think you can escape? Mwahaha, there's no escaping your destiny. The game ends only with your crushing defeat or unlikely victory!"
-        );
       return false;
     }
   }
