@@ -28,6 +28,7 @@ const randomPlay = () => {
 
 const playRound = (playerSelection, computerSelection) => {
   // logic of the game goes here
+  playerSelection = playerSelection.trim()
   if (
     // rock beats scissors
     (playerSelection == "rock" && computerSelection == "scissors") ||
