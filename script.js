@@ -49,7 +49,7 @@ const playRound = (playerSelection, computerSelection) => {
     (playerSelection == "paper" && computerSelection == "scissors")
   ) {
     alert(
-      `You chose ${playerSelection}  and the Evil AI chose, ${computerSelection} \nMwhahahahahahaha! AI wins again.`
+      `You chose ${playerSelection} and the Evil AI chose, ${computerSelection} \nMwhahahahahahaha! AI wins again.`
     );
     return "computer";
     // returns draw if the player and computer choose the same sign
