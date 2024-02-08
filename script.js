@@ -5,20 +5,20 @@ const randomPlay = () => {
   let random_selection = "";
   switch (Math.floor(Math.random() * 12)) {
     case 0:
-    case 10:
-    case 5:
+    case 3:
+    case 6:
     case 9:
       random_selection = "rock";
       break;
-    case 8:
-    case 2:
     case 1:
+    case 4:
     case 7:
+    case 10:
       random_selection = "paper";
       break;
-    case 4:
-    case 3:
-    case 6:
+    case 2:
+    case 5:
+    case 8:
     case 11:
       random_selection = "scissors";
       break;
