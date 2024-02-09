@@ -147,7 +147,7 @@ const game = () => {
             `${player} ... Haven't you played this game before? Your only options are Rock, Paper or Scissors!`
           );
           player_selection = prompt(
-            `ROUND ${i + 1} ${player}'s score is ${player_wins} and the Evil AI's score is ${computer_wins}. ROUND ${i + 1}  🔔\nRock, paper, scissors, SHOOT!`
+            `ROUND ${i + 1} ${player}'s score is ${player_wins} and the Evil AI's score is ${computer_wins}. 🔔\nRock, paper, scissors, SHOOT!`
           );
       }
       else break;
