@@ -74,7 +74,7 @@ const getUserName = () => {
   return player;
 };
 
-const getPlayerSelection = (i) => {
+const getPlayerSelection = (i, player, player_wins, computer_wins) => {
   player_selection = prompt(
     `ROUND ${
       i + 1
@@ -151,7 +151,7 @@ const game = () => {
   for (let i = 0; i < 5; i++) {
     let computer_selection = randomPlay();
 
-    player_selection = getPlayerSelection(i);
+    player_selection = getPlayerSelection(i, player, player_wins, computer_wins);
 
     while (!validateSelection(player_selection)) {
       if (!exit) {
