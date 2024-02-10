@@ -84,7 +84,6 @@ const getPlayerSelection = (i, player, player_wins, computer_wins) => {
 };
 
 const validateSelection = (playerSelection) => {
-    console.log(!playerSelection)
 
     if(playerSelection == null){
         exit = true;
