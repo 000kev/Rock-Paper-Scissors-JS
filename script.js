@@ -74,7 +74,7 @@ const getUserName = () => {
   return player;
 };
 
-const getPlayerSelection = () => {
+const getPlayerSelection = (i) => {
   player_selection = prompt(
     `ROUND ${
       i + 1
@@ -132,7 +132,6 @@ const game = () => {
   let player_wins = 0;
   let computer_wins = 0;
   let player_selection = "";
-
   let player = getUserName();
   if (
     confirm(
@@ -147,20 +146,22 @@ const game = () => {
         🔴 You can forfeit the game by typing in exit.
         🎮See who wins each round!`);
   }
+  else exit = true;
 
   for (let i = 0; i < 5; i++) {
     let computer_selection = randomPlay();
 
-    player_selection = getPlayerSelection();
+    player_selection = getPlayerSelection(i);
 
     while (!validateSelection(player_selection)) {
       if (!exit) {
         alert(
           `${player} ... Haven't you played this game before? Your only options are Rock, Paper or Scissors!`
         );
-        player_selection = getPlayerSelection();
+        player_selection = getPlayerSelection(i);
       } else break;
     }
+
     if (exit) break;
     let round_winner = playRound(player_selection, computer_selection);
     if (round_winner === "draw") continue;
