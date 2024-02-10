@@ -71,24 +71,20 @@ const playRound = (playerSelection, computerSelection) => {
 };
 
 const validateSelection = (playerSelection) => {
-  if (typeof playerSelection === "object") {
-    if (
-      playerSelection == null ||
-      playerSelection == undefined ||
-      playerSelection == NaN
-    ) {
+    console.log(!playerSelection)
+
+    if(playerSelection == null){
+        exit = true;
+    }
+    if (!playerSelection) {
       console.log(
         "You think you can escape? Mwahaha, there's no escaping your destiny. The game ends only with your crushing defeat or unlikely victory!"
       );
       return false;
-    }
-  } else if (typeof (playerSelection === "string")) {
+    } else {
     playerSelection = playerSelection.trim();
     playerSelection = playerSelection.toLowerCase();
 
-    if (playerSelection == "exit") {
-      exit = true;
-    }
     if (playerSelection != "") {
       let regex1 = /\d/;
       if (!regex1.test(playerSelection)) {
@@ -112,7 +108,7 @@ const validateSelection = (playerSelection) => {
       console.log("Please put something in there...");
       return false;
     }
-  } else return false;
+  }
 };
 
 const game = () => {
