@@ -158,7 +158,7 @@ const game = () => {
         alert(
           `${player} ... Haven't you played this game before? Your only options are Rock, Paper or Scissors!`
         );
-        player_selection = getPlayerSelection(i);
+        player_selection = getPlayerSelection(i, player, player_wins, computer_wins);
       } else break;
     }
 
