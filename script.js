@@ -52,7 +52,6 @@ const playRound = (playerSelection, computerSelection) => {
   ) {
     log("player", playerSelection, computerSelection);
     return "player";
-
   } else if (
     (playerSelection == "rock" && computerSelection == "paper") ||
     (playerSelection == "scissors" && computerSelection == "rock") ||
@@ -60,14 +59,28 @@ const playRound = (playerSelection, computerSelection) => {
   ) {
     log("computer", playerSelection, computerSelection);
     return "computer";
-
   } else if (playerSelection == computerSelection) {
     log("draw", playerSelection, computerSelection);
     return "draw";
-
   } else {
     alert("Error Error, something went wrong!");
   }
+};
+
+const getUserName = () => {
+  player = prompt("Please enter your username", "Player");
+  if (player == null || player == undefined || player.trim() == "")
+    player = "Player";
+  return player;
+};
+
+const getPlayerSelection = (i, player, player_wins, computer_wins) => {
+  player_selection = prompt(
+    `ROUND ${
+      i + 1
+    } 🔔\n${player}'s score is ${player_wins} and the Evil AI's score is ${computer_wins}. \nRock, paper, scissors, SHOOT!`
+  );
+  return player_selection;
 };
 
 const validateSelection = (playerSelection) => {
@@ -115,46 +128,36 @@ const game = () => {
   let player_wins = 0;
   let computer_wins = 0;
   let player_selection = "";
-
-  player = prompt("Please enter your username", "Player");
-  if (player == null || player == undefined || player.trim() == "")
-    player = "Player";
-
-    if (
-        confirm(
-            `Welcome, ${player}, to Rock Paper Scissors! If you are new to the game click ok to read the rules. If you already know the rules click cancel to proceed with the game, and Good Luck😉🍀! `
-        )
-    ) {
-        confirm(`A classic two-person game. Players start each round by saying, “rock, paper, scissors, shoot!” On “shoot,” each player holds out their fist for rock🪨, flat hand for paper📄, or their index and middle finger for scissors✄. But since the computer doesn't have fingers, you will use the prompt to type rock, paper or scissors.
+  let player = getUserName();
+  if (
+    confirm(
+      `Welcome, ${player}, to Rock Paper Scissors! If you are new to the game click ok to read the rules. If you already know the rules click cancel to proceed with the game, and Good Luck😉🍀! `
+    )
+  ) {
+    confirm(`A classic two-person game. Players start each round by saying, “rock, paper, scissors, shoot!” On “shoot,” each player holds out their fist for rock🪨, flat hand for paper📄, or their index and middle finger for scissors✄. But since the computer doesn't have fingers, you will use the prompt to type rock, paper or scissors.
         The rules are :
         🔴 Rock crushes scissors.
         🔴 Scissors cuts paper.
         🔴 Paper covers rock.
         🔴 You can forfeit the game by typing in exit.
         🎮See who wins each round!`);
-    }
+  }
+  else exit = true;
 
     for (let i = 0; i < 5; i++) {
         let computer_selection = randomPlay();
 
-    player_selection = prompt(
-      `ROUND ${
-        i + 1
-      } 🔔\n${player}'s score is ${player_wins} and the Evil AI's score is ${computer_wins}. \nRock, paper, scissors, SHOOT!`
-    );
+    player_selection = getPlayerSelection(i, player, player_wins, computer_wins);
 
     while (!validateSelection(player_selection)) {
       if (!exit) {
         alert(
           `${player} ... Haven't you played this game before? Your only options are Rock, Paper or Scissors!`
         );
-        player_selection = prompt(
-          `ROUND ${
-            i + 1
-          } 🔔\n${player}'s score is ${player_wins} and the Evil AI's score is ${computer_wins}. \nRock, paper, scissors, SHOOT!`
-        );
+        player_selection = getPlayerSelection(i, player, player_wins, computer_wins);
       } else break;
     }
+
     if (exit) break;
     let round_winner = playRound(player_selection, computer_selection);
     if (round_winner === "draw") continue;
