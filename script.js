@@ -84,16 +84,15 @@ const getPlayerSelection = (i, player, player_wins, computer_wins) => {
 };
 
 const validateSelection = (playerSelection) => {
-
-    if(playerSelection == null){
-        exit = true;
-    }
-    if (!playerSelection) {
-      console.log(
-        "You think you can escape? Mwahaha, there's no escaping your destiny. The game ends only with your crushing defeat or unlikely victory!"
-      );
-      return false;
-    } else {
+  if (playerSelection == null) {
+    exit = true;
+  }
+  if (!playerSelection) {
+    console.log(
+      "You think you can escape? Mwahaha, there's no escaping your destiny. The game ends only with your crushing defeat or unlikely victory!"
+    );
+    return false;
+  } else {
     playerSelection = playerSelection.trim();
     playerSelection = playerSelection.toLowerCase();
 
@@ -140,33 +139,42 @@ const game = () => {
         🔴 Paper covers rock.
         🔴 You can forfeit the game by typing in exit.
         🎮See who wins each round!`);
-  }
-  else exit = true;
+  } else exit = true;
 
-    for (let i = 0; i < 5; i++) {
-        let computer_selection = randomPlay();
+  for (let i = 0; i < 5; i++) {
+    let computer_selection = randomPlay();
 
-    player_selection = getPlayerSelection(i, player, player_wins, computer_wins);
+    player_selection = getPlayerSelection(
+      i,
+      player,
+      player_wins,
+      computer_wins
+    );
 
     while (!validateSelection(player_selection)) {
       if (!exit) {
         alert(
           `${player} ... Haven't you played this game before? Your only options are Rock, Paper or Scissors!`
         );
-        player_selection = getPlayerSelection(i, player, player_wins, computer_wins);
+        player_selection = getPlayerSelection(
+          i,
+          player,
+          player_wins,
+          computer_wins
+        );
       } else break;
     }
 
     if (exit) break;
     let round_winner = playRound(player_selection, computer_selection);
-    if (round_winner === "draw") continue;
-    else round_winner === "player" ? player_wins++ : computer_wins++;
 
+    round_winner === "player" ? player_wins++ : computer_wins++;
     console.log(
       `ROUND ${
         i + 1
       } ${player}'s score is ${player_wins} and the Evil AI's score is ${computer_wins}.`
     );
+    if (round_winner == "draw") continue;
   }
   if (!exit) {
     let game_announcement = "";
