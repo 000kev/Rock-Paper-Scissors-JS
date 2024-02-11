@@ -43,8 +43,6 @@ const log = (outcome, playerSelection, computerSelection) => {
 };
 
 const playRound = (playerSelection, computerSelection) => {
-  playerSelection = playerSelection.trim();
-  playerSelection = playerSelection.toLowerCase();
   if (
     (playerSelection == "rock" && computerSelection == "scissors") ||
     (playerSelection == "scissors" && computerSelection == "paper") ||
@@ -80,7 +78,7 @@ const getPlayerSelection = (i, player, player_wins, computer_wins) => {
       i + 1
     } 🔔\n${player}'s score is ${player_wins} and the Evil AI's score is ${computer_wins}. \nRock, paper, scissors, SHOOT!`
   );
-  return player_selection;
+  return player_selection!=null ? player_selection.trim().toLowerCase() : null;
 };
 
 const validateSelection = (playerSelection) => {
@@ -93,9 +91,6 @@ const validateSelection = (playerSelection) => {
     );
     return false;
   } else {
-    playerSelection = playerSelection.trim();
-    playerSelection = playerSelection.toLowerCase();
-
     if (playerSelection != "") {
       let regex1 = /\d/;
       if (!regex1.test(playerSelection)) {
