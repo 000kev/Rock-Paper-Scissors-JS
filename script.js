@@ -137,7 +137,6 @@ const game = () => {
         🔴 Rock crushes scissors.
         🔴 Scissors cuts paper.
         🔴 Paper covers rock.
-        🔴 You can forfeit the game by typing in exit.
         🎮See who wins each round!`);
   } else exit = true;
 
